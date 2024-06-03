@@ -12,8 +12,14 @@ public class Balls {
         mapBalls(balls);
     }
 
-    public GameResult calculateScore(Balls balls) {
-        return new GameResult(0, 3);
+    public PlayResult play(Balls balls) {
+        PlayResult playResult = new PlayResult();
+        for (Ball ball : this.balls){
+            BallStatus status = balls.play(ball);
+            playResult.report(status);
+        }
+                
+        return playResult;
     }
 
     public BallStatus play(Ball ball) {
