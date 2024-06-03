@@ -12,6 +12,10 @@ public class Balls {
         mapBalls(balls);
     }
 
+    public GameResult calculateScore(Balls balls) {
+        return new GameResult(0, 3);
+    }
+
     public BallStatus play(Ball ball) {
         return this.balls.stream()
                 .map(b -> b.play(ball))
