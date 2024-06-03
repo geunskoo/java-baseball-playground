@@ -10,6 +10,14 @@ import static org.assertj.core.api.Assertions.*;
 public class BallsTest {
 
     @Test
+    @DisplayName("정답볼 전체와 위치와 값 모두 일치하면 STRIKE 이다.")
+    void Strike_ShouldEqualPositionAndBallNumber(){
+        Balls answers = new Balls(Arrays.asList(1, 2, 3));
+        Ball ball = new Ball(1, new BallNumber(1));
+        assertThat(answers.play(ball)).isEqualTo(BallStatus.STRIKE);
+    }
+
+    @Test
     @DisplayName("정답볼 전체와 위치만 다르면 BALL 이다.")
     void Ball_ShouldOnlyEqualBallNumber(){
         Balls answers = new Balls(Arrays.asList(1, 2, 3));
