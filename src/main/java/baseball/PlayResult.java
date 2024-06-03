@@ -3,6 +3,7 @@ package baseball;
 public class PlayResult {
 
     private static final int GAME_OVER_COUNT_STRIKE = 3;
+    private static final int NO_PRINT_SCORE_STD = 0;
 
     private int strike;
     private int ball;
@@ -31,5 +32,18 @@ public class PlayResult {
 
     public boolean isGameOver() {
         return strike == GAME_OVER_COUNT_STRIKE;
+    }
+
+    public void printResult() {
+        if (ball != NO_PRINT_SCORE_STD){
+            System.out.print(ball + " 볼 ");
+        }
+        if (strike != NO_PRINT_SCORE_STD){
+            System.out.print(strike + " 스트라이크 ");
+        }
+        if (strike == NO_PRINT_SCORE_STD && ball == NO_PRINT_SCORE_STD){
+            System.out.print("낫싱");
+        }
+        System.out.println();
     }
 }
