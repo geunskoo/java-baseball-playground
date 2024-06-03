@@ -2,6 +2,8 @@ package baseball;
 
 public class PlayResult {
 
+    private static final int GAME_OVER_COUNT_STRIKE = 3;
+
     private int strike;
     private int ball;
 
@@ -25,5 +27,9 @@ public class PlayResult {
         if (status.isBall()){
             ball += 1;
         }
+    }
+
+    public boolean isGameOver() {
+        return strike == GAME_OVER_COUNT_STRIKE;
     }
 }
