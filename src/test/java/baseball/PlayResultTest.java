@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class PlayResultTest {
 
     @Test
@@ -39,5 +41,25 @@ public class PlayResultTest {
         PlayResult playResult = answers.play(userBalls);
         Assertions.assertThat(playResult.getBall()).isEqualTo(3);
         Assertions.assertThat(playResult.getStrike()).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("3 Strike 이면 게임이 종료된다.")
+    public void Strike3_ShouldBeGameOver(){
+        Balls answers = new Balls(Arrays.asList(1, 2, 3));
+        Balls userBalls = new Balls(Arrays.asList(1, 2, 3));
+        PlayResult playResult = answers.play(userBalls);
+
+        assertThat(playResult.isGameOver()).isTrue();
+    }
+
+    @Test
+    @DisplayName("3 Strike 아니면 게임이 종료되지 않는다.")
+    public void NotStrike3_ShouldNotBeGameOver(){
+        Balls answers = new Balls(Arrays.asList(1, 2, 3));
+        Balls userBalls = new Balls(Arrays.asList(1, 3, 2));
+        PlayResult playResult = answers.play(userBalls);
+
+        assertThat(playResult.isGameOver()).isFalse();
     }
 }
